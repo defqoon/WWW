@@ -17,7 +17,6 @@ Author URL: farukahmed.com
     = Magnific Popup
     = Vidio auto play
     = Fit Vids
-    = Google Map
 
 */
 
@@ -42,12 +41,14 @@ jQuery(function ($) {
     // -------------------------------------------------------------
 
     (function () {
-        $('a[href*=#]').bind("click", function(e){
+        $('body').on('click', 'a[href*=#]', function(e){
             var anchor = $(this);
-            $('html, body').stop().animate({
-                scrollTop: $(anchor.attr('href')).offset().top
-            }, 1000);
-            e.preventDefault();
+            if ($(this).attr('href') !== '#') {
+              $('html, body').stop().animate({
+                  scrollTop: $(anchor.attr('href')).offset().top
+                }, 1000);
+                e.preventDefault();
+              }
         });
     }());
 
